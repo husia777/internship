@@ -1,9 +1,11 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from django.contrib.auth.views import LoginView
-from django.shortcuts import render, redirect
-from django.views.generic import View
+from django.shortcuts import render
 
 from main.forms import AuthUserForm, CreateUserForm
+
+from django.views.generic import View
+from django.shortcuts import redirect
 
 
 class HomePageView(View):
@@ -14,7 +16,10 @@ class HomePageView(View):
 class LoginUserView(LoginView):
     form_class = AuthUserForm
     template_name = 'html/login.html'
-    success_url = 'home'
+
+    def get_success_url(self):
+        self.success_url = 'http://127.0.0.1:8000/home/'
+        return self.success_url
 
 
 class RegisterUserView(View):
@@ -39,3 +44,6 @@ class RegisterUserView(View):
             'form': form
         }
         return render(request, self.template_name, context)
+
+
+

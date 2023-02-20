@@ -1,3 +1,12 @@
 from django.contrib import admin
+from .models import Mailing, MailSubscribedToTheNewsletter
 
-# Register your models here.
+
+@admin.register(Mailing)
+class MailingAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(MailSubscribedToTheNewsletter)
+class MailSubscribedToTheNewsletterAdmib(admin.ModelAdmin):
+    pass

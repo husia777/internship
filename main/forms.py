@@ -33,13 +33,13 @@ class CreateUserForm(ModelForm):
     class Meta:
         model = User
         fields = ["email", 'username']
+
     def username_clean(self):
         username = self.cleaned_data['username']
         new = User.objects.filter(username=username)
         if new.count():
             raise ValidationError(" Username Already Exist")
         return username
-
 
     def email_clean(self):
         email = self.cleaned_data['email'].lower()
