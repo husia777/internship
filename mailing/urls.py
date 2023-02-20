@@ -1,3 +1,6 @@
 from django.urls import path
+from mailing.views import email_subscription
 
-url_patterns = []
+urlpatterns = [
+    path('email/', email_subscription, name='email'),
+]

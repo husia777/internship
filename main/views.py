@@ -2,15 +2,16 @@ from django.contrib.auth import authenticate, logout
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 
+from mailing.forms import MailingForm
 from main.forms import AuthUserForm, CreateUserForm
-
 from django.views.generic import View
 from django.shortcuts import redirect
 
 
-class HomePageView(View):
-    def get(self, request):
-        return render(request, 'html/index.html')
+def home(request):
+    context = {
+        'form': MailingForm}
+    return render(request, 'html/index.html', context)
 
 
 class LoginUserView(LoginView):
@@ -46,4 +47,8 @@ class RegisterUserView(View):
         return render(request, self.template_name, context)
 
 
-
+def subscribe_to_the_newsletter(request):
+    current_user = request.user
+    current_user.subscribe_to_the_newsletter = True
+    current_user.save()
+    return render(request, 'html/index.html')

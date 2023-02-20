@@ -51,9 +51,9 @@
                     <!-- Ссылки для аккаунта (регистрация, вход) -->
                     {% if request.user.is_authenticated %}
                         <div class="navigation__account-links">
-                            <a href="{% url 'logout' %}">
-                                Logout
-                            </a>
+                        <a href="{% url 'logout' %}">
+                            Logout
+                        </a>
 
                     {% else %}
 
@@ -74,6 +74,7 @@
                             </button>
                         </div>
                     {% endif %}
+                    </div>
                 </div>
             </nav>
 
@@ -560,13 +561,17 @@
                     </p>
                 </div>
 
-                <form action="" method="post" class="newsletter-section__subscribe-form">
-                    <input type="email" class="field newsletter-section__email-field" placeholder="Enter your email">
+                <form action="{% url 'email' %}" method="post" class="newsletter-section__subscribe-form">
+                    {% csrf_token %}
+                    <input name="email" type="email" class="field newsletter-section__email-field" placeholder="Enter your email">
 
-                    <button class="blue-button newsletter-section__subscribe-button">
+                    <button type="submit" class="blue-button newsletter-section__subscribe-button">
                         Subscribe
                     </button>
                 </form>
+                <button class="blue-button newsletter-section__subscribe-button">
+                    <a methods="post" href="{% url 'email_current' %}"> Subscribe with current email </a>
+                </button>
             </div>
         </section>
     </main>

@@ -1,11 +1,16 @@
 from django import forms
-from mailing.models import Mailing
+
+from .models import MailSubscribedToTheNewsletter
 
 
 class MailingForm(forms.ModelForm):
     class Meta:
-        model = Mailing
+        model = MailSubscribedToTheNewsletter
         fields = ('email',)
         widgets = {
-            'email': forms.TextInput(attrs={'class: field newsletter-section__email-field'})
+            'email': forms.TextInput(attrs={'class': 'field newsletter-section__email-field'})
         }
+
+
+
+

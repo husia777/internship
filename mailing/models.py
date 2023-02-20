@@ -4,7 +4,6 @@ from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from config.settings import EMAIL_HOST_USER
 from main.models import User
-
 # signals imports
 from django.dispatch import receiver
 from django.db.models.signals import post_save
