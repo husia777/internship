@@ -1,3 +1,4 @@
+import requests
 from django.contrib.auth import password_validation
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
@@ -74,5 +75,7 @@ class FormCalculator(forms.Form):
     hash_rate = forms.FloatField(label='', widget=forms.TextInput(
         attrs={'class': 'field     ', 'placeholder': 'Enter your hash rate'}))
     options = forms.ChoiceField(label='', choices=OPTION_CHOICES)
-    va = forms.ChoiceField(label='', choices=OPTION_CHOICES)
-
+    data = requests.get(
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false').json()
+    CURRENCY_CHOICES = [(i, v['name']) for i, v in enumerate(data)]
+    currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES)
