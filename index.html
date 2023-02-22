@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <title>Cryptocurrency</title>
+
+    <link rel="stylesheet" href="normalize.css"> <!-- Стили, сбрасывающие неудобные стили по умолчанию -->
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body>
+    <header class="hero-header">
+        <div class="container hero-header__container">
+            <nav class="navigation">
+                <!-- Логотип -->
+                <a href="/">
+                    <img src="img/logo.svg" alt="Crappo logo">
+                </a>
+
+                <!-- Меню -->
+                <div class="navigation__menu">
+                    <ul class="navigation__links">
+                        <li>
+                            <a href="">Products</a>
+                        </li>
+
+                        <li>
+                            <a href="">Features</a>
+                        </li>
+
+                        <li>
+                            <a href="">About</a>
+                        </li>
+
+                        <li>
+                            <a href="">Contact</a>
+                        </li>
+                    </ul>
+
+                    <!-- Ссылки для аккаунта (регистрация, вход) -->
+                    <div class="navigation__account-links">
+                        <a href="">
+                            Login
+                        </a>
+
+                        <svg width="1" height="24" viewBox="0 0 1 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line opacity="0.3" x1="0.5" y1="2.18557e-08" x2="0.499999" y2="24" stroke="#F2F2F2" />
+                        </svg>
+
+                        <button class="blue-button navigation__register-button">
+                            Register
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="hero-section">
+                <!-- Продающий текст, предложение -->
+                <div class="hero-section__offer">
+                    <a class="sale hero-section__sale" href="/">
+                        <b class="sale__save">
+                            75% SAVE
+                        </b>
+
+                        <p class="sale__description">
+                            For the Black Friday weekend
+                        </p>
+                    </a>
+
+                    <h1 class="hero-section__heading">
+                        Fastest & secure platform to invest in crypto
+                    </h1>
+
+                    <p class="section-description hero-section__section-description">
+                        Buy and sell cryptocurrencies, trusted by 10M wallets with over $30 billion in
+                        transactions.
+                    </p>
+
+                    <button class="blue-button">
+                        Try for free
+                        <img src="img/right-arrow.svg" alt="Right arrow">
+                    </button>
+                </div>
+
+                <img src="./img/illustration.svg" alt="Bitcoin illustration">
+            </section>
+        </div>
+    </header>
+
+    <main>
+        <!-- Секция со статистикой -->
+        <section class="statistics-section">
+            <div class="container statistics-section__container">
+                <!-- Статистика -->
+                <div class="statistic">
+                    <img class="statistic__icon" src="img/chart.svg" alt="Chart icon">
+
+                    <div class="statistic__info">
+                        <h4 class="statistic__value">
+                            $30B
+                        </h4>
+
+                        <p class="statistic__name">
+                            Digital Currency Exchanged
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Статистика -->
+                <div class="statistic">
+                    <img class="statistic__icon" src="img/user.svg" alt="User icon">
+
+                    <div class="statistic__info">
+                        <h4 class="statistic__value">
+                            10M+
+                        </h4>
+
+                        <p class="statistic__name">
+                            Trusted Wallets Investor
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Статистика -->
+                <div class="statistic">
+                    <img class="statistic__icon" src="img/planet.svg" alt="User icon">
+
+                    <div class="statistic__info">
+                        <h4 class="statistic__value">
+                            195
+                        </h4>
+
+                        <p class="statistic__name">
+                            Countries Supported
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container features-section__container">
+                <img src="img/graphics-card-illustration.svg" alt="Graphics card illustration">
+
+                <div>
+                    <h2 class="section-heading features-section__section-heading">
+                        Why you should choose CRAPPO
+                    </h2>
+
+                    <p class="section-description features-section__section-description">
+                        Experience the next generation cryptocurrency platform. No financial borders,
+                        extra fees, and fake reviews.
+                    </p>
+
+                    <button class="blue-button">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция объединяющая секции с калькулятором и с валютами -->
+        <div class="trading-section">
+            <!-- Калькулятор -->
+            <section class="calculator-section">
+                <div class="container">
+                    <h2 class="section-heading calculator-section__section-heading">
+                        Check how much you can earn
+                    </h2>
+
+                    <p class="section-description calculator-section__section-description">
+                        Let’s check your hash rate to see how much you will earn today, Exercitation veniam
+                        consequat sunt nostrud amet.
+                    </p>
+
+                    <!-- Калькулятор -->
+                    <div class="calculator-section__calculator">
+                        <form class="calculator-section__calculator-form">
+                            <input type="text" class="field calculator-section__hash-rate-field"
+                                placeholder="Enter your hash rate">
+
+                            <!-- Выпадающий список величин -->
+                            <select class="field calculator-section__unit-select">
+                                <option value="th-s">TH/s</option>
+                                <option value="option-2">Option 2</option>
+                                <option value="option-3">Option 3</option>
+                            </select>
+
+                            <button class="blue-button" type="button">
+                                Calculate
+                            </button>
+                        </form>
+
+                        <div class="calculator-section__result-info">
+                            <!-- Надпись над результатом -->
+                            <p class="calculator-section__result-label">
+                                ESTIMATED 24 HOUR REVENUE:
+                            </p>
+
+                            <!-- Результат -->
+                            <output class="calculator-section__result">
+                                0.055 130 59 <abbr title="Ethereum">ETH</abbr>
+                                <span>($1275)</span>
+                            </output>
+
+                            <!-- Заметка -->
+                            <p class="calculator-section__note">
+                                Revenue will change based on mining difficulty and Ethereum price.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Секция с поддерживаемыми валютами -->
+            <section class="currencies-section">
+                <div class="container">
+                    <h2 class="section-heading currencies-section__section-heading">
+                        Trade securely and market the high growth cryptocurrencies.
+                    </h2>
+
+                    <!-- Слайдер с криптовалютами -->
+                    <div class="currencies-section__currencies-slider">
+                        <!-- Слайд 1 -->
+                        <div class="currencies-section__currencies-slide">
+                            <article class="currency-card currency-card_highlighted">
+                                <img src="img/bitcoin.svg" alt="Bitcoin icon" class="currency-card__currency-icon">
+
+                                <h3 class="currency-card__heading">
+                                    Bitcoin <sup class="currency-card__currency-code">BTC</sup>
+                                </h3>
+
+                                <p class="currency-card__description">
+                                    Digital currency in which a record of transactions is maintained.
+                                </p>
+
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="img/right-arrow.svg" alt="Right arrow">
+                                </a>
+
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
+                            </article>
+
+                            <article class="currency-card">
+                                <img src="img/ethereum.svg" alt="Ethereum icon" class="currency-card__currency-icon">
+
+                                <h3 class="currency-card__heading">
+                                    Ethereum <sup class="currency-card__currency-code">ETH</sup>
+                                </h3>
+
+                                <p class="currency-card__description">
+                                    Blockchain technology to create and run decentralized digital applications.
+                                </p>
+
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="img/right-arrow.svg" alt="Right arrow">
+                                </a>
+
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
+                            </article>
+
+                            <article class="currency-card">
+                                <img src="img/litecoin.svg" alt="Litecoin icon" class="currency-card__currency-icon">
+
+                                <h3 class="currency-card__heading">
+                                    Ethereum <sup class="currency-card__currency-code">LTC</sup>
+                                </h3>
+
+                                <p class="currency-card__description">
+                                    Cryptocurrency that enables instant payments to anyone in the world.
+                                </p>
+
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="img/right-arrow.svg" alt="Right arrow">
+                                </a>
+
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
+                            </article>
+                        </div>
+
+                        <!-- Слайд 2 -->
+                        <div class="currencies-section__currencies-slide" hidden>
+                            <article class="currency-card currency-card_highlighted">
+                                <img src="img/bitcoin.svg" alt="Bitcoin icon" class="currency-card__currency-icon">
+
+                                <h3 class="currency-card__heading">
+                                    Bitcoin <sup class="currency-card__currency-code">BTC</sup>
+                                </h3>
+
+                                <p class="currency-card__description">
+                                    Second slide
+                                </p>
+
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="img/right-arrow.svg" alt="Right arrow">
+                                </a>
+
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
+                            </article>
+
+                            <article class="currency-card">
+                                <img src="img/ethereum.svg" alt="Ethereum icon" class="currency-card__currency-icon">
+
+                                <h3 class="currency-card__heading">
+                                    Ethereum <sup class="currency-card__currency-code">ETH</sup>
+                                </h3>
+
+                                <p class="currency-card__description">
+                                    Second slide
+                                </p>
+
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="img/right-arrow.svg" alt="Right arrow">
+                                </a>
+
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
+                            </article>
+
+                            <article class="currency-card">
+                                <img src="img/litecoin.svg" alt="Litecoin icon" class="currency-card__currency-icon">
+
+                                <h3 class="currency-card__heading">
+                                    Ethereum <sup class="currency-card__currency-code">LTC</sup>
+                                </h3>
+
+                                <p class="currency-card__description">
+                                    Second slide
+                                </p>
+
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="img/right-arrow.svg" alt="Right arrow">
+                                </a>
+
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
+                            </article>
+                        </div>
+
+                        <!-- Слайд 3 -->
+                        <div class="currencies-section__currencies-slide" hidden>
+                            <article class="currency-card currency-card_highlighted">
+                                <img src="img/bitcoin.svg" alt="Bitcoin icon" class="currency-card__currency-icon">
+
+                                <h3 class="currency-card__heading">
+                                    Bitcoin <sup class="currency-card__currency-code">BTC</sup>
+                                </h3>
+
+                                <p class="currency-card__description">
+                                    Third slide
+                                </p>
+
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="img/right-arrow.svg" alt="Right arrow">
+                                </a>
+
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
+                            </article>
+
+                            <article class="currency-card">
+                                <img src="img/ethereum.svg" alt="Ethereum icon" class="currency-card__currency-icon">
+
+                                <h3 class="currency-card__heading">
+                                    Ethereum <sup class="currency-card__currency-code">ETH</sup>
+                                </h3>
+
+                                <p class="currency-card__description">
+                                    Third slide
+                                </p>
+
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="img/right-arrow.svg" alt="Right arrow">
+                                </a>
+
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
+                            </article>
+
+                            <article class="currency-card">
+                                <img src="img/litecoin.svg" alt="Litecoin icon" class="currency-card__currency-icon">
+
+                                <h3 class="currency-card__heading">
+                                    Ethereum <sup class="currency-card__currency-code">LTC</sup>
+                                </h3>
+
+                                <p class="currency-card__description">
+                                    Third slide
+                                </p>
+
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="img/right-arrow.svg" alt="Right arrow">
+                                </a>
+
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
+                            </article>
+                        </div>
+
+                        <!--Стрелки для слайдера -->
+                        <div class="currencies-section__slider-buttons">
+                            <button id="leftArrowButton">
+                                <img src="img/left-arrow.svg" alt="Left arrow">
+                            </button>
+
+                            <button id="rightArrowButton">
+                                <img src="img/right-arrow-3.svg" alt="Right arrow">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Секция с достоинствами -->
+        <section class="merits-section">
+            <div class="container">
+                <h2 class="section-heading merits-section__section-heading">
+                    Market sentiments, portfolio, and run the infrastructure of your choice
+                </h2>
+
+                <div class="merit">
+                    <div class="merit__merit-info">
+                        <h4 class="merit__merit-title">
+                            Invest Smart
+                        </h4>
+
+                        <p class="merit__merit-description">
+                            Get full statistic information about the behaviour of buyers and sellers will
+                            help you to make the decision.
+                        </p>
+
+                        <button class="blue-button">
+                            Learn more
+                        </button>
+                    </div>
+
+                    <img src="img/chart-illustration.svg" alt="Chart illustration">
+                </div>
+
+                <div class="merit merit_reversed-columns">
+                    <img src="img/statistic-illustration.svg" alt="Statistic illustration"
+                        class="merit__overflowing-illustration">
+
+                    <div class="merit__merit-info">
+                        <h4 class="merit__merit-title">
+                            Detailed Statistics
+                        </h4>
+
+                        <p class="merit__merit-description">
+                            View all mining related information in realtime, at any point at any location
+                            and decide which polls you want to mine in.
+                        </p>
+
+                        <button class="blue-button">
+                            Learn more
+                        </button>
+                    </div>
+                </div>
+
+                <div class="merit">
+                    <div class="merit__merit-info">
+                        <h4 class="merit__merit-title">
+                            Grow your profit and track your investments
+                        </h4>
+
+                        <p class="merit__merit-description">
+                            Use advanced analytical tools. Clear TradingView charts let you track
+                            current and historical profit investments.
+                        </p>
+
+                        <button class="blue-button">
+                            Learn more
+                        </button>
+                    </div>
+
+                    <table class="dinamic__courses">
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Price</th>
+                            <th>Change</th>
+                            <th>Volume(24h)</th>
+                        </tr>    
+                        <tr>
+                            <td class="crypt"><img src="./img/BTC.png" alt="Bitcoin"></td>
+                            <td>currency</td>
+                            <td>+/-</td>
+                            <td>volume</td>
+                        </tr>
+                        <tr>
+                            <td class="crypt"><img src="./img/ETH.png" alt="Ethereum"></td>
+                            <td>currency</td>
+                            <td>+/-</td>
+                            <td>volume</td>
+                        </tr>
+                        <tr>
+                            <td class="crypt"><img src="./img/LTC.png" alt="litecoin"></td>
+                            <td>currency</td>
+                            <td>+/-</td>
+                            <td>volume</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция с подпиской на рассылку новостей -->
+        <section class="newsletter-section">
+
+            <!-- Световые полосы, декоративный элемент -->
+            <img src="img/light-2.svg" alt="Light" class="newsletter-section__light-decoration">
+
+            <div class="container newsletter-section__container">
+                <div class="newsletter-section__text">
+                    <h3 class="newsletter-section__heading">
+                        Start mining now
+                    </h3>
+
+                    <p class="newsletter-section__description">
+                        Join now with CRAPPO to get the latest news and start mining now
+                    </p>
+                </div>
+
+                <form class="newsletter-section__subscribe-form">
+                    <input type="email" class="field newsletter-section__email-field" placeholder="Enter your email">
+
+                    <button class="blue-button newsletter-section__subscribe-button">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <!-- Колонны футера -->
+            <div class="footer__columns">
+                <img src="img/logo.svg" alt="Crappo logo">
+
+                <nav class="footer__links-columns">
+                    <div class="footer-links-column">
+                        <h5 class="footer-links-column__heading">
+                            Quick Link
+                        </h5>
+
+                        <ul class="footer-links-column__links-list">
+                            <li>
+                                <a href="">Home</a>
+                            </li>
+
+                            <li>
+                                <a href="">Products</a>
+                            </li>
+
+                            <li>
+                                <a href="">About</a>
+                            </li>
+
+                            <li>
+                                <a href="">Features</a>
+                            </li>
+
+                            <li>
+                                <a href="">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-column">
+                        <h5 class="footer-links-column__heading">
+                            Resources
+                        </h5>
+
+                        <ul class="footer-links-column__links-list">
+                            <li>
+                                <a href="">Download WhitePaper</a>
+                            </li>
+
+                            <li>
+                                <a href="">Smart Token</a>
+                            </li>
+
+                            <li>
+                                <a href="">Blockchain Explorer</a>
+                            </li>
+
+                            <li>
+                                <a href="">Crypto API</a>
+                            </li>
+
+                            <li>
+                                <a href="">Interest</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="footer__payment-systems">
+                    <h3 class="footer__payment-systems-column-heading">
+                        We accept following payment systems
+                    </h3>
+
+                    <ul class="footer__payment-systems-list">
+                        <li title="Visa">
+                            <img src="img/visa.svg" alt="Visa logo">
+                        </li>
+
+                        <li title="Mastercard">
+                            <img src="img/mastercard.svg" alt="Mastercard logo">
+                        </li>
+
+                        <li title="Bitcoin">
+                            <img src="img/bitcoin-2.svg" alt="Bitcoin logo">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>
