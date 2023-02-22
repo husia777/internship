@@ -6,7 +6,6 @@ from django.forms import ModelForm
 
 from main.models import User
 
-
 class AuthUserForm(AuthenticationForm, ModelForm):
     class Meta:
         model = User
@@ -66,5 +65,11 @@ class CreateUserForm(ModelForm):
         return user
 
 
-
+class FormCalculator(forms.Form):
+    OPTION_CHOICES =(
+    ("1", "TH/s"),
+    ("2", "Option23"),
+    ("3", "Option3"),)
+    hash_rate = forms.FloatField(label='', widget=forms.TextInput(attrs={'class':'field     ','placeholder': 'Enter your hash rate'}))
+    options = forms.ChoiceField(label='', choices=OPTION_CHOICES)
 

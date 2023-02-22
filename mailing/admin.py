@@ -8,5 +8,5 @@ class MailingAdmin(admin.ModelAdmin):
 
 
 @admin.register(MailSubscribedToTheNewsletter)
-class MailSubscribedToTheNewsletterAdmib(admin.ModelAdmin):
+class MailSubscribedToTheNewsletterAdmin(admin.ModelAdmin):
     pass

@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from main.models import Headers
+
+
+@admin.register(Headers)
+class HeadersAdmin(admin.ModelAdmin):
+    pass

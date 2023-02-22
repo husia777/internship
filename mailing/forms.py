@@ -8,7 +8,7 @@ class MailingForm(forms.ModelForm):
         model = MailSubscribedToTheNewsletter
         fields = ('email',)
         widgets = {
-            'email': forms.TextInput(attrs={'class': 'field newsletter-section__email-field'})
+            'email': forms.TextInput(attrs={'class': 'field'})
         }
 
 

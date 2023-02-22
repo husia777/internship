@@ -1,16 +1,27 @@
+import requests
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 
 from mailing.forms import MailingForm
-from main.forms import AuthUserForm, CreateUserForm
+from main.forms import AuthUserForm, CreateUserForm, FormCalculator
 from django.views.generic import View
 from django.shortcuts import redirect
 
+from main.models import Headers
+
 
 def home(request):
+    headers = Headers.objects.all()
+    api_data = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false').json()
+
     context = {
-        'form': MailingForm}
+        'api_data': api_data,
+        'home': headers[0],
+        'headers': headers[1::],
+        # 'form': MailingForm,
+         'calculator': FormCalculator }
+    
     return render(request, 'html/index.html', context)
 
 
