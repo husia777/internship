@@ -1,0 +1,72 @@
+version: '3.8'
+
+volumes:
+  app:
+
+
+services:
+  postgres:
+    image: postgres:14.7-alpine
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  migrations:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+
+
+    command: >
+      sh -c "python manage.py migrate --noinput"
+
+  app:
+
+    ports:
+      - "8000:8000"
+    restart: on-failure
+    build: .
+    volumes:
+      - ./:/app
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    command:
+      sh -c "python ./manage.py makemigrations && python ./manage.py makemigrations main && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+    depends_on:
+      - postgres
+      - migrations
+
+  worker:
+    restart: always
+    build:
+      context: .
+    volumes:
+      - ./:/app
+    command: [ 'celery',  '-A', 'config', 'worker', '-l' ,'INFO' ]
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    depends_on:
+      - postgres
+      - app
+      - redis

@@ -9,7 +9,6 @@ urlpatterns = [
     path('login/', LoginUserView.as_view(), name='login'),
     path('register/', RegisterUserView.as_view(), name='register'),
     path("logout/", LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),
-    path('email_current/', subscribe_to_the_newsletter, name='email_current')
-
+    path('email_current/', subscribe_to_the_newsletter, name='email_current'),
 ]
 

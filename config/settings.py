@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'HOST': 'postgres', #postgres
         'PORT': '5432'
     }
 }
@@ -142,3 +142,8 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'naimoffh@yandex.ru'
 EMAIL_HOST_PASSWORD = 'zkcyseohujejfooe'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+REDIS_HOST = 'redis'
+REDIS_PORT = '6379'
+# CELERY settings
+CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'

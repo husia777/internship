@@ -1,3 +1,4 @@
+from celery import shared_task
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.utils.html import strip_tags

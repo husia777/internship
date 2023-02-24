@@ -2,17 +2,20 @@ import requests
 from django.contrib.auth import authenticate
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
+from django.urls import reverse
+
 from main.forms import AuthUserForm, CreateUserForm, FormCalculator
 from django.views.generic import View
 from django.shortcuts import redirect
 from main.models import Headers
+from main.services import get_data, coins_data
+from django.http import JsonResponse
 
 
 def home(request):
     headers = Headers.objects.all()
-    api_data = requests.get(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false').json()
-
+    api_data = coins_data
+    print(api_data, 0000000000000000000000)
     context = {
         'api_data': api_data,
         'home': headers[0],
@@ -21,6 +24,27 @@ def home(request):
         'calculator': FormCalculator}
 
     return render(request, 'html/index.html', context)
+
+
+# context = {
+#         'currency': api_data[coin],
+#         'api_data': api_data,
+#         'home': headers[0],
+#         'headers': headers[1::],
+#         # 'form': MailingForm,
+#         'calculator': FormCalculator}
+#
+#     return render(request, 'html/index.html', context)
+def calculate_income(request):
+    if request.method == 'GET':
+        form = FormCalculator(request.GET)
+        if form.is_valid():
+            coin = form.cleaned_data['currency']
+            currencies = get_data()
+            current_coin_price = currencies[coin]
+            request.session['currency'] = current_coin_price
+
+            return JsonResponse({'currency': current_coin_price})
 
 
 class LoginUserView(LoginView):
