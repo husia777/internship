@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="../../static/css/normalize.css">
     <!-- Стили, сбрасывающие неудобные стили по умолчанию -->
     <link rel="stylesheet" href="../../static/css/styles.css">
-    <script src="../../static/js/main.js"></script>
 </head>
 {% block content %}
     <body>
     <header class="hero-header">
+        <h1 style='display: none;' class='page-title entry-title'>Fastest & secure platform to invest in crypto</h1>
         <div class="container hero-header__container">
             <nav class="navigation">
                 <!-- Логотип -->
@@ -81,9 +81,9 @@
                         </p>
                     </a>
 
-                    <h1 class="hero-section__heading">
+                    <p class="hero-section__heading">
                         Fastest & secure platform to invest in crypto
-                    </h1>
+                    </p>
 
                     <p class="section-description hero-section__section-description">
                         Buy and sell cryptocurrencies, trusted by 10M wallets with over $30 billion in
@@ -158,9 +158,10 @@
                 <img src="../../static/img/graphics-card-illustration.svg" alt="Graphics card illustration">
 
                 <div>
-                    <h2 class="section-heading features-section__section-heading">
+                    <h2 style='display: none;' class='page-title entry-title'>Why you should choose CRAPPO</h2>
+                    <p class="section-heading features-section__section-heading">
                         Why you should choose CRAPPO
-                    </h2>
+                    </p>
 
                     <p class="section-description features-section__section-description">
                         Experience the next generation cryptocurrency platform. No financial borders,
@@ -179,9 +180,9 @@
             <!-- Калькулятор -->
             <section class="calculator-section">
                 <div class="container">
-                    <h2 class="section-heading calculator-section__section-heading">
+                    <p class="section-heading calculator-section__section-heading">
                         Check how much you can earn
-                    </h2>
+                    </p>
 
                     <p class="section-description calculator-section__section-description">
                         Let’s check your hash rate to see how much you will earn today, Exercitation veniam
@@ -194,7 +195,6 @@
                             {{calculator}}
                             <!-- <input type="text" class="field calculator-section__hash-rate-field"
                                    placeholder="Enter your hash rate">
-
                             Выпадающий список величин
                             <select class="field calculator-section__unit-select">
                                 <option value="th-s">TH/s</option>
@@ -231,9 +231,9 @@
             <!-- Секция с поддерживаемыми валютами -->
             <section class="currencies-section">
                 <div class="container">
-                    <h2 class="section-heading currencies-section__section-heading">
+                    <p class="section-heading currencies-section__section-heading">
                         Trade securely and market the high growth cryptocurrencies.
-                    </h2>
+                    </p>
 
                     <!-- Слайдер с криптовалютами -->
                     <div class="currencies-section__currencies-slider">
@@ -270,136 +270,108 @@
                             <!-- <article class="currency-card">
                                 <img src="../../static/img/ethereum.svg" alt="Ethereum icon"
                                      class="currency-card__currency-icon">
-
                                 <h3 class="currency-card__heading">
                                     Ethereum <sup class="currency-card__currency-code">ETH</sup>
                                 </h3>
-
                                 <p class="currency-card__description">
                                     Blockchain technology to create and run decentralized digital applications.
                                 </p>
-
                                 <a class="blue-button currency-card__start-button" href="">
                                     Start mining
                                     <img src="../../static/img/right-arrow.svg" alt="Right arrow">
                                 </a>
-
                                  Кнопка со стрелкой 
                                  <a class="currency-card__learn-more-link" href="">
                                     <img src="../../static/img/right-arrow-2.svg" alt="Right arrow">
                                 </a>
                             </article>
-
                             <article class="currency-card">
                                 <img src="../../static/img/litecoin.svg" alt="Litecoin icon"
                                      class="currency-card__currency-icon">
-
                                 <h3 class="currency-card__heading">
                                     Ethereum <sup class="currency-card__currency-code">LTC</sup>
                                 </h3>
-
                                 <p class="currency-card__description">
                                     Cryptocurrency that enables instant payments to anyone in the world.
                                 </p>
-
                                 <a class="blue-button currency-card__start-button" href="">
                                     Start mining
                                     <img src="../../static/img/right-arrow.svg" alt="Right arrow">
                                 </a>
-
                                  Кнопка со стрелкой 
                                  <a class="currency-card__learn-more-link" href="">
                                     <img src="../../static/img/right-arrow-2.svg" alt="Right arrow">
                                 </a>
                             </article>
                         </div>
-
                          Слайд 2 
                         <div class="currencies-section__currencies-slide" hidden>
                             <article class="currency-card currency-card_highlighted">
                                 <img src="../../static/img/bitcoin.svg" alt="Bitcoin icon"
                                      class="currency-card__currency-icon">
-
                                 <h3 class="currency-card__heading">
                                     Bitcoin <sup class="currency-card__currency-code">BTC</sup>
                                 </h3>
-
                                 <p class="currency-card__description">
                                     Second slide
                                 </p>
-
                                 <a class="blue-button currency-card__start-button" href="">
                                     Start mining
                                     <img src="../../static/img/right-arrow.svg" alt="Right arrow">
                                 </a>
-
                                  Кнопка со стрелкой 
                                 <a class="currency-card__learn-more-link" href="">
                                     <img src="../../static/img/right-arrow-2.svg" alt="Right arrow">
                                 </a>
                             </article>
-
                             <article class="currency-card">
                                 <img src="../../static/img/ethereum.svg" alt="Ethereum icon"
                                      class="currency-card__currency-icon">
-
                                 <h3 class="currency-card__heading">
                                     Ethereum <sup class="currency-card__currency-code">ETH</sup>
                                 </h3>
-
                                 <p class="currency-card__description">
                                     Second slide
                                 </p>
-
                                 <a class="blue-button currency-card__start-button" href="">
                                     Start mining
                                     <img src="../../static/img/right-arrow.svg" alt="Right arrow">
                                 </a>
-
                                  Кнопка со стрелкой
                                 <a class="currency-card__learn-more-link" href="">
                                     <img src="../../static/img/right-arrow-2.svg" alt="Right arrow">
                                 </a>
                             </article>
-
                             <article class="currency-card">
                                 <img src="../../static/img/litecoin.svg" alt="Litecoin icon"
                                      class="currency-card__currency-icon">
-
                                 <h3 class="currency-card__heading">
                                     Ethereum <sup class="currency-card__currency-code">LTC</sup>
                                 </h3>
-
                                 <p class="currency-card__description">
                                     Second slide
                                 </p>
-
                                 <a class="blue-button currency-card__start-button" href="">
                                     Start mining
                                     <img src="../../static/img/right-arrow.svg" alt="Right arrow">
                                 </a>
-
                                  Кнопка со стрелкой 
                                 <a class="currency-card__learn-more-link" href="">
                                     <img src="../../static/img/right-arrow-2.svg" alt="Right arrow">
                                 </a>
                             </article>
                         </div>
-
                          Слайд 3 
                         <div class="currencies-section__currencies-slide" hidden>
                             <article class="currency-card currency-card_highlighted">
                                 <img src="../../static/img/bitcoin.svg" alt="Bitcoin icon"
                                      class="currency-card__currency-icon">
-
                                 <h3 class="currency-card__heading">
                                     Bitcoin <sup class="currency-card__currency-code">BTC</sup>
                                 </h3>
-
                                 <p class="currency-card__description">
                                     Third slide
                                 </p>
-
                                 <a class="blue-button currency-card__start-button" href="">
                                     Start mining
                                     <img src="../../static/img/right-arrow.svg" alt="Right arrow">
@@ -410,19 +382,15 @@
                                     <img src="../../static/img/right-arrow-2.svg" alt="Right arrow">
                                 </a>
                             </article>
-
                             <article class="currency-card">
                                 <img src="../../static/img/ethereum.svg" alt="Ethereum icon"
                                      class="currency-card__currency-icon">
-
                                 <h3 class="currency-card__heading">
                                     Ethereum <sup class="currency-card__currency-code">ETH</sup>
                                 </h3>
-
                                 <p class="currency-card__description">
                                     Third slide
                                 </p>
-
                                 <a class="blue-button currency-card__start-button" href="">
                                     Start mining
                                     <img src="../../static/img/right-arrow.svg" alt="Right arrow">
@@ -433,19 +401,15 @@
                                     <img src="../../static/img/right-arrow-2.svg" alt="Right arrow">
                                 </a>
                             </article>
-
                             <article class="currency-card">
                                 <img src="../../static/img/litecoin.svg" alt="Litecoin icon"
                                      class="currency-card__currency-icon">
-
                                 <h3 class="currency-card__heading">
                                     Ethereum <sup class="currency-card__currency-code">LTC</sup>
                                 </h3>
-
                                 <p class="currency-card__description">
                                     Third slide
                                 </p>
-
                                 <a class="blue-button currency-card__start-button" href="">
                                     Start mining
                                     <img src="../../static/img/right-arrow.svg" alt="Right arrow">
@@ -476,9 +440,9 @@
         <!-- Секция с достоинствами -->
         <section class="merits-section">
             <div class="container">
-                <h2 class="section-heading merits-section__section-heading">
+                <p class="section-heading merits-section__section-heading">
                     Market sentiments, portfolio, and run the infrastructure of your choice
-                </h2>
+                </p>
 
                 <div class="merit">
                     <div class="merit__merit-info">
@@ -673,6 +637,7 @@
             </div>
         </div>
     </footer>
+    <script src="../../static/js/main.js"></script>
     </body>
 {% endblock %}
 </html>
