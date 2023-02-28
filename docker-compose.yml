@@ -1,7 +1,5 @@
 version: '3.8'
 
-volumes:
-  app:
 
 
 services:
@@ -13,7 +11,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
-
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - ./backend/core/db:/var/lib/postgresql/data:Z
 
   redis:
     image: redis
@@ -31,7 +31,8 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
-
+    volumes:
+      - ./backend/core/migrations:/usr/src/app/backend/core/migrations
 
     command: >
       sh -c "python manage.py migrate --noinput"
