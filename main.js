@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 })
-fetch(`http://127.0.0.1/calculate/data?hash-rate=${hashRate}&unit=${unit}`)
+fetch(`http://127.0.0.1:8000/calculate/data?hash-rate=${hashRate}&unit=${unit}`)
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error(error));
