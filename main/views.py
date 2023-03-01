@@ -7,20 +7,25 @@ from django.urls import reverse
 from main.forms import AuthUserForm, CreateUserForm, FormCalculator
 from django.views.generic import View
 from django.shortcuts import redirect
-from main.models import Headers
+from main.models import Headers, Resources, HeroHeaderContent, StatisticContent
 from main.services import get_data, coins_data
 from django.http import JsonResponse
 
 
 def home(request):
+    resources = Resources.objects.all()
     headers = Headers.objects.all()
+    hero_headers = HeroHeaderContent.objects.all()
+    statistic_data = StatisticContent.objects.all()
     api_data = coins_data
     print(api_data, 0000000000000000000000)
     context = {
+        'statistic_data': statistic_data,
         'api_data': api_data,
         'home': headers[0],
         'headers': headers[1::],
-        # 'form': MailingForm,
+        'hero_headers': hero_headers,
+        'resources': resources,
         'calculator': FormCalculator}
 
     return render(request, 'html/index.html', context)

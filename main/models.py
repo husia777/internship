@@ -3,13 +3,46 @@ from django.db import models
 from urllib.parse import urlparse
 
 
-class Headers(models.Model):
-    title = models.CharField(max_length=60)
+class SocialLink(models.Model):
     url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
 
     def url_text(self):
         parsed_url = urlparse(self.url)
         return parsed_url.hostname.replace("www.", "") + "/..."
+
+
+class HeroHeaderContent(models.Model):
+    content = models.CharField(max_length=255)
+    description = models.TextField(default='')
+    url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
+
+    def url_text(self):
+        parsed_url = urlparse(self.url)
+        return parsed_url.hostname.replace("www.", "") + "/..."
+
+
+class StatisticContent(models.Model):
+    url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
+    content = models.CharField(max_length=255, default='')
+    description = models.TextField(default='')
+
+    def url_text(self):
+        parsed_url = urlparse(self.url)
+        return parsed_url.hostname.replace("www.", "") + "/..."
+
+
+class Resources(models.Model):
+    title = models.CharField(max_length=60)
+
+    url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
+
+    def url_text(self):
+        parsed_url = urlparse(self.url)
+        return parsed_url.hostname.replace("www.", "") + "/..."
+
+
+class Headers(models.Model):
+    title = models.CharField(max_length=60)
 
 
 class User(AbstractUser):
