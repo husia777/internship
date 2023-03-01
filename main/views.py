@@ -8,7 +8,7 @@ from main.forms import AuthUserForm, CreateUserForm, FormCalculator
 from django.views.generic import View
 from django.shortcuts import redirect
 from main.models import Headers, Resources, HeroHeaderContent, StatisticContent
-from main.services import get_data, coins_data
+from main.services import coins_data
 from django.http import JsonResponse
 
 
@@ -18,9 +18,11 @@ def home(request):
     hero_headers = HeroHeaderContent.objects.all()
     statistic_data = StatisticContent.objects.all()
     api_data = coins_data
-    print(api_data, 0000000000000000000000)
+    coin_for_statistic = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false').json()
+    print(api_data)
     context = {
         'statistic_data': statistic_data,
+        'coin_for_statistic': coin_for_statistic,
         'api_data': api_data,
         'home': headers[0],
         'headers': headers[1::],
@@ -31,21 +33,13 @@ def home(request):
     return render(request, 'html/index.html', context)
 
 
-# context = {
-#         'currency': api_data[coin],
-#         'api_data': api_data,
-#         'home': headers[0],
-#         'headers': headers[1::],
-#         # 'form': MailingForm,
-#         'calculator': FormCalculator}
-#
-#     return render(request, 'html/index.html', context)
+
 def calculate_income(request):
     if request.method == 'GET':
         form = FormCalculator(request.GET)
         if form.is_valid():
             coin = form.cleaned_data['currency']
-            currencies = get_data()
+            currencies = coins_data
             current_coin_price = currencies[coin]
             request.session['currency'] = current_coin_price
 

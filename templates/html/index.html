@@ -350,24 +350,15 @@
                             <th>Change</th>
                             <th>Volume(24h)</th>
                         </tr>
+                        {% for coin in coin_for_statistic %}
+
                         <tr>
-                            <td class="crypt"><img src="../../static/img/BTC.png" alt="Bitcoin"></td>
-                            <td>currency</td>
-                            <td>+/-</td>
-                            <td>volume</td>
+                            <td class="crypt"><img src={{ coin.image }} alt="Bitcoin"></td>
+                            <td>{{ coin.current_price }}</td>
+                            <td>{{coin.price_change_24h}}</td>
+                            <td>{{ coin.total_volume }}</td>
                         </tr>
-                        <tr>
-                            <td class="crypt"><img src="../../static/img/ETH.png" alt="Ethereum"></td>
-                            <td>currency</td>
-                            <td>+/-</td>
-                            <td>volume</td>
-                        </tr>
-                        <tr>
-                            <td class="crypt"><img src="../../static/img/LTC.png" alt="litecoin"></td>
-                            <td>currency</td>
-                            <td>+/-</td>
-                            <td>volume</td>
-                        </tr>
+                        {% endfor %}
                     </table>
                 </div>
             </div>
