@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost', #postgres
+        'HOST': 'postgres',  # postgres
         'PORT': '5432'
     }
 }
@@ -147,3 +147,5 @@ REDIS_HOST = 'redis'
 REDIS_PORT = '6379'
 # CELERY settings
 CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_BROKER_TRANSPORT_OPTION = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = CELERY_BROKER_URL
