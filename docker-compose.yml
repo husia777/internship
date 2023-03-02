@@ -40,14 +40,14 @@ services:
     restart: on-failure
     build: .
     volumes:
-      - ./:/app
+      - ./:/usr/src/app
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
     command:
       sh -c "python ./manage.py makemigrations && python ./manage.py makemigrations main && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-
+    working_dir: /app
     depends_on:
       - postgres
       - migrations
