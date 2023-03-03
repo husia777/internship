@@ -13,10 +13,10 @@ from django.http import JsonResponse
 
 
 def home(request):
-    resources = Resources.objects.all()
-    headers = Headers.objects.all()
-    hero_headers = HeroHeaderContent.objects.all()
-    statistic_data = StatisticContent.objects.all()
+    resources = Resources.objects.order_by('id')
+    headers = Headers.objects.order_by('id')
+    hero_headers = HeroHeaderContent.objects.order_by('id')
+    statistic_data = StatisticContent.objects.order_by('id')
     api_data = coins_data
     coin_for_statistic = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false').json()
     print(api_data)
