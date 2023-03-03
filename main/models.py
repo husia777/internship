@@ -33,7 +33,6 @@ class StatisticContent(models.Model):
 
 class Resources(models.Model):
     title = models.CharField(max_length=60)
-
     url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
 
     def url_text(self):
@@ -43,6 +42,7 @@ class Resources(models.Model):
 
 class Headers(models.Model):
     title = models.CharField(max_length=60)
+    url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
 
 
 class User(AbstractUser):
