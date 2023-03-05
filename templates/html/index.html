@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="../../static/css/normalize.css">
     <!-- Стили, сбрасывающие неудобные стили по умолчанию -->
     <link rel="stylesheet" href="../../static/css/styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../../static/js/main.js"></script>
 </head>
 {% block content %}
@@ -232,13 +234,11 @@
                     </h2>
 
                     <!-- Слайдер с криптовалютами -->
-                    <div class="currencies-section__currencies-slider">
-                        <!-- Слайд 1 -->
+                    <div class="slider currencies-section__currencies-slider" data-slide-elements-count="3"
+                        data-slider-name="currencies-slider">
+                        {% for coin in api_data %}
 
-                        <div class="currencies-section__currencies-slide">
-                            {% for coin in api_data %}
-
-                                <article class="currency-card currency-card_highlighted">
+                                <article class="currencies-slider__element currency-card currency-card_highlighted">
 
                                     <img src="{{ coin.image }}" alt="Bitcoin icon"
                                          class="currency-card__currency-icon">
@@ -263,18 +263,18 @@
                                     </a>
 
                                 </article>
+
                             {% endfor %}
 
-                            <div class="currencies-section__slider-buttons">
-                                <button id="leftArrowButton">
+                            <div class="currencies-slider__navigation-arrows currencies-section__slider-buttons">
+                                <button class="left-arrow-button">
                                     <img src="../../static/img/left-arrow.svg" alt="Left arrow">
                                 </button>
 
-                                <button id="rightArrowButton">
+                                <button class="right-arrow-button">
                                     <img src="../../static/img/right-arrow-3.svg" alt="Right arrow">
                                 </button>
                             </div>
-                        </div>
                     </div>
             </section>
         </section>
@@ -308,8 +308,9 @@
                 </div>
 
                 <div class="merit merit_reversed-columns">
-                    <img src="../../static/img/statistic-illustration.svg" alt="Statistic illustration"
-                         class="merit__overflowing-illustration">
+                    <div>
+                        <canvas id="meritChart"></canvas>
+                    </div>
 
                     <div class="merit__merit-info">
                         <h4 class="merit__merit-title">
@@ -344,22 +345,41 @@
                             </button>
                         </a>
                     </div>
-                    <table class="dinamic__courses">
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th>Price</th>
-                            <th>Change</th>
-                            <th>Volume(24h)</th>
-                        </tr>
-                        {% for coin in coin_for_statistic %}
 
-                        <tr>
-                            <td class="crypt"><img src={{ coin.image }} alt="Bitcoin"></td>
-                            <td>{{ coin.current_price }}</td>
-                            <td>{{coin.price_change_24h}}</td>
-                            <td>{{ coin.total_volume }}</td>
-                        </tr>
-                        {% endfor %}
+                    <table class="slider dinamic__courses" data-slide-elements-count="3" 
+                            data-slider-name="currencies-table-slider" data-slides-tag-name="tbody">
+
+                            <thead>
+                                <th>&nbsp;</th>
+                                <th>Price</th>
+                                <th>Change</th>
+                                <th>Volume(24h)</th>
+                            </thead>
+
+                            {% for coin in coin_for_statistic %}
+
+                            <tr class="currencies-table-slider__element">
+                                <td class="crypt"><img src={{ coin.image }} alt="Bitcoin"></td>
+                                <td>{{ coin.current_price }}</td>
+                                <td>{{coin.price_change_24h}}</td>
+                                <td>{{ coin.total_volume }}</td>
+                            </tr>
+
+                            {% endfor %}
+
+                            <tfoot class="currencies-table-slider__near-element">
+                                <tr class="currencies-table-slider__navigation-arrows" colspan="4">
+                                    <td>
+                                        <button class="left-arrow-button">
+                                            <img src="../../static/img/left-arrow-2.svg" alt="Left arrow">
+                                        </button>
+            
+                                        <button class="right-arrow-button">
+                                            <img src="../../static/img/right-arrow-4.svg" alt="Right arrow">
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tfoot>
                     </table>
                 </div>
             </div>

@@ -521,7 +521,7 @@ body {
   position: relative;
 }
 
-.currencies-section__currencies-slide {
+.currencies-slider__slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -538,7 +538,7 @@ body {
       -ms-flex-align: start;
           align-items: start;
 }
-.currencies-section__currencies-slide[hidden] {
+.currencies-slider__slide[hidden] {
   display: none;
 }
 
@@ -695,6 +695,17 @@ body {
           transform: translateX(-25%);
 }
 
+.merit__currencies-table-navigation-arrows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.merit__currencies-table-navigation-arrows-container {
+  width: 100%;
+}
+
 @media (max-width: 1243px) {
   .merit__overflowing-illustration {
     -webkit-transform: none;
@@ -714,6 +725,7 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
 .newsletter-section {
   overflow: hidden;
   position: relative;
