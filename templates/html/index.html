@@ -404,6 +404,8 @@
 
                 <form action="{% url 'email' %}" method="post" class="newsletter-section__subscribe-form">
                     {% csrf_token %}
+
+
                     <input name="email" type="email" class="field newsletter-section__email-field"
                            placeholder="Enter your email">
 
