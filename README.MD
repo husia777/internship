@@ -23,3 +23,4 @@ https://api.coingecko.com/api/v3/coins/{coin_name}
 login to server -  ssh hussein@garinv.online
 password - `HusseinZaq123`
 command -  cd /usr/src/hussein/
+sudo docker compose -f docker-compose.prod.yml up --build 
