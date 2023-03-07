@@ -2,47 +2,51 @@
 window.addEventListener('DOMContentLoaded', () => {
     const currenciesTableBody = document.querySelector('.dinamic__courses tbody')
     currenciesTableBody.replaceWith(...currenciesTableBody.childNodes)
-    
+
     Chart.defaults.color = 'white'
     Chart.defaults.font.family = 'Rubik'
     const meritChartCanvas = document.getElementById('meritChart')
 
-    new Chart(meritChartCanvas, {
-        type: 'bar',
-        data: {
-            labels: [ 'Label 1', 'Label 2', 'Label 3', 'Label 4' ], // Надписи для столбов графика
-            datasets: [{
-                label: 'Data',
-                data: [ 10, 20, 10, 50, ], // Данные для графика
-            }]
-        },
-        options: {
-            responsive: true, // Делает график адаптивным относительно родителя
-
-            plugins: {
-                legend: {
-                    labels: {
-                        font: {
-                            size: 18,
+    // Здесь происходит формирование запроса по данным для графика:
+    fetch('http://127.0.0.1:8000').then(response => {
+    response.json().then(data => {
+        Chart.defaults.color = 'white'
+        Chart.defaults.font.family = 'Rubik'
+        const meritChartCanvas = document.getElementById('meritChart')
+        new Chart(meritChartCanvas, {
+            type: 'bar',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ], // Надписи для столбов графика
+                datasets: [{
+                    label: 'Data',
+                    data: data, // Данные для графика
+                }]
+            },
+            options: {
+                responsive: true, // Делает график адаптивным относительно родителя
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                size: 14,
+                            }
                         }
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 },
-            },
-
-            scales: {
-                y: {
-                    beginAtZero: true
+                elements: {
+                    bar: {
+                        backgroundColor: 'rgba(101,138,231,0.79)'
+                    }
                 }
             },
-
-            elements: {
-                bar: {
-                    backgroundColor: '#2b67ffc9'
-                }
-            }
-        },
-    })
-
+        })
+    }).catch(error => console.log(error))
+}).catch(error => console.log(error))
 
     // Получает все слайдеры
     const sliders = document.querySelectorAll('.slider')
@@ -119,7 +123,13 @@ function initializeSlider(slider) {
     function createNewSlide() {
         const newSlide = document.createElement(slidesTagName)
         newSlide.classList.add(`${sliderName}__slide`)
-    
+
         return newSlide
     }
 }
+
+    //fetch запрос для калькулятора:
+fetch(`http://127.0.0.1:8000/calculate/`)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));

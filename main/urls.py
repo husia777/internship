@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth.views import LogoutView
 
 from config import settings
-from main.views import home, LoginUserView, RegisterUserView, subscribe_to_the_newsletter, calculator
+from main.views import home, LoginUserView, RegisterUserView, subscribe_to_the_newsletter, calculator, chart
 
 urlpatterns = [
     path('home/', home, name='home'),
@@ -11,5 +11,6 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),
     path('email_current/', subscribe_to_the_newsletter, name='email_current'),
     path('calculate/', calculator, name='calculator'),
+    path('chart/', chart, name='chart')
 ]
 

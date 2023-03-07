@@ -5,7 +5,7 @@ from django import forms
 from django.forms import ModelForm
 
 from main.models import User
-from main.services import  coins_data
+from main.services import coins_data
 
 
 class AuthUserForm(AuthenticationForm, ModelForm):
@@ -78,3 +78,14 @@ class FormCalculator(forms.Form):
     data = coins_data
     CURRENCY_CHOICES = [(i, v['name']) for i, v in enumerate(data)]
     currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES)
+
+
+class Chart(forms.Form):
+    data = coins_data
+    CURRENCY_CHOICES = [(i, v['id']) for i, v in enumerate(data)]
+    currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'chart-control'

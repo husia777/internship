@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.urls import reverse
 
-from main.forms import AuthUserForm, CreateUserForm, FormCalculator
+from main.forms import AuthUserForm, CreateUserForm, FormCalculator, Chart
 from django.views.generic import View
 from django.shortcuts import redirect
 from main.models import Headers, Resources, HeroHeaderContent, StatisticContent
@@ -18,7 +18,8 @@ def home(request):
     hero_headers = HeroHeaderContent.objects.order_by('id')
     statistic_data = StatisticContent.objects.order_by('id')
     api_data = coins_data
-    coin_for_statistic = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false').json()
+    coin_for_statistic = requests.get(
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false').json()
     print(api_data)
     context = {
         'statistic_data': statistic_data,
@@ -28,10 +29,11 @@ def home(request):
         'headers': headers[1::],
         'hero_headers': hero_headers,
         'resources': resources,
-        'calculator': FormCalculator}
+        'calculator': FormCalculator,
+        'chart': Chart
+    }
 
     return render(request, 'html/index.html', context)
-
 
 
 def calculate_income(request):
@@ -89,8 +91,15 @@ def subscribe_to_the_newsletter(request):
 def calculator(request):
     hash_rate = request.GET.get('hash_rate')
     currency = int(request.GET.get('currency')) + 1
-
     data = requests.get(
         f'https://whattomine.com/coins/{currency}.json?hr={hash_rate}.0&p=0.0&fee=0.0&cost=0.0&cost_currency=USD&hcost=0.0&span_br=&span_d=24').json()
     response = {'profit': data['profit'], 'name_coins': data['tag'], 'count': data['estimated_rewards']}
+    return JsonResponse(response)
+
+
+def chart(request):
+    currency = request.GET.get('currency')
+    data = requests.get(f'https://api.coingecko.com/api/v3/coins/{currency}').json()
+    response = {'24h': data['price_change_percentage_24h'], '7d': data['price_change_percentage_7d'],
+                '30d': data['price_change_percentage_30d'], '1y': data['price_change_percentage_1y']}
     return JsonResponse(response)
