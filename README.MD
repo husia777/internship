@@ -24,3 +24,4 @@ login to server -  ssh hussein@garinv.online
 password - `HusseinZaq123`
 command -  cd /usr/src/hussein/
 sudo docker compose -f docker-compose.prod.yml up --build 
+gunicorn config.wsgi:application --bind 0.0.0.0:8000
