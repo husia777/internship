@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const meritChartCanvas = document.getElementById('meritChart')
 
     // Здесь происходит формирование запроса по данным для графика:
-    fetch('http://127.0.0.1:8000').then(response => {
+    fetch('http://127.0.0.1:8000/chart/').then(response => {
     response.json().then(data => {
         Chart.defaults.color = 'white'
         Chart.defaults.font.family = 'Rubik'
