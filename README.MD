@@ -18,3 +18,8 @@ https://api.coingecko.com/api/v3/coins/{coin_name}
 "price_change_percentage_60d": 33.56477,
 "price_change_percentage_200d": -3.62528,
 "price_change_percentage_1y": -42.95292,
+
+
+login to server -  ssh hussein@garinv.online
+password - `HusseinZaq123`
+command -  cd /usr/src/hussein/
