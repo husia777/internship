@@ -66,15 +66,15 @@ services:
       - app
       - redis
 
-  nginx:
-    build: ./nginx
-    volumes:
-      - static_volume:/usr/src/hussein/static
-      - media_volume:/usr/src/hussein/media
-    ports:
-      - 1337:80
-    depends_on:
-      - app
+#  nginx:
+#    build: ./nginx
+#    volumes:
+#      - static_volume:/usr/src/hussein/static
+#      - media_volume:/usr/src/hussein/media
+#    ports:
+#      - 1337:80
+#    depends_on:
+#      - app
 volumes:
   postgres_data:
   static_volume:
