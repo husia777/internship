@@ -44,7 +44,7 @@ services:
     env_file:
       - ./.env.dev
     command:
-      sh -c "python ./manage.py makemigrations && python ./manage.py makemigrations main && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+      sh -c "python ./manage.py makemigrations && python ./manage.py makemigrations main && python manage.py migrate && python manage.py runserver garinv.online:8000"
     working_dir: /app
     depends_on:
       - postgres
