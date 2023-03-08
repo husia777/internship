@@ -65,26 +65,22 @@ window.addEventListener('DOMContentLoaded', () => {
         const hashRate = hashRateField.value
 
         fetch(`http://garinv.online:8000/calculate?hash_rate=${hashRate}&currency=${calculatorCoinSelect.value}`, {
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin'
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+            },
         }).then(response => {
             response.json().then(data => {
                 coinCount.textContent = data.count
                 profit.textContent = `(${data.profit})`
                 coinName.textContent = data['name_coins']
-
             })
         })
     })
 
 
     function updateChart() {
-        fetch(`https://api.coingecko.com/api/v3/coins/${coinSelect.value}`, {
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin'
-        }).then(response => {
+        fetch(`https://api.coingecko.com/api/v3/coins/${coinSelect.value}`).then(response => {
             response.json().then(coinData => {
                 const coinMarketData = coinData['market_data']
                 const chartDatasetData = chart.data.datasets[0].data
