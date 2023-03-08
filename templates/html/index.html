@@ -13,12 +13,12 @@
 
     <title>Cryptocurrency</title>
 
-    <link rel="stylesheet" type="text/css" href=" {% static '/css/normalize.css' %} ">
+    <link rel="stylesheet" href="../../static/css/normalize.css">
     <!-- Стили, сбрасывающие неудобные стили по умолчанию -->
-    <link rel="stylesheet" href=" {% static '/css/styles.css' %}">
+    <link rel="stylesheet" href="../../static/css/styles.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src=" {% static '/js/main.js' %} "></script>
+    <script src="../../static/js/main.js"></script>
 </head>
 {% block content %}
     <body>
@@ -197,10 +197,21 @@
                     <!-- Калькулятор -->
                     <div class="calculator-section__calculator">
                         <form class="calculator-section__calculator-form">
-                            {{ calculator }}
+                            <input type="text" class="field calculator-section__hash-rate-field" 
+                                placeholder="Enter your hashrate">
+
+                            <select class="field select calculator-section__coin-select">
+                                <option value="0">
+                                    Bitcoin
+                                </option>
+
+                                <option value="3">
+                                    Litecoin
+                                </option>
+                            </select>
 
 
-                            <button class="blue-button" type="button">
+                            <button class="blue-button" type="button" id="calculateButton">
                                 Calculate
                             </button>
                         </form>
@@ -213,8 +224,9 @@
 
                             <!-- Результат -->
                             <output class="calculator-section__result">
-                                0.055 130 59 <abbr title="Ethereum">ETH</abbr>
-                                <span>($1275)</span>
+                                <span id="coinCount"> 0 </span> 
+                                <abbr title="Ethereum" id="coinName">ETH</abbr>
+                                <span id="profit">($0)</span>
                             </output>
 
                             <!-- Заметка -->
@@ -306,7 +318,7 @@
 
                     <img src="../../static/img/chart-illustration.svg" alt="Chart illustration">
                 </div>
-                {{ chart }}
+
                 <div class="merit merit_reversed-columns">
                     <div>
                         <canvas id="meritChart"></canvas>
@@ -320,6 +332,20 @@
                             {{ statistic_data.2.description }}
 
                         </p>
+                        
+                        <select class="select merit__coin-select">
+                            <option value="bitcoin">
+                                Bitcoin
+                            </option>
+
+                            <option value="ethereum">
+                                Ethereum
+                            </option>
+
+                            <option value="litecoin">
+                                Litecoin
+                            </option>
+                        </select>
 
                         <a href={{ statistic_data.1.url }}>
                             <button class="blue-button">
@@ -404,8 +430,6 @@
 
                 <form action="{% url 'email' %}" method="post" class="newsletter-section__subscribe-form">
                     {% csrf_token %}
-
-
                     <input name="email" type="email" class="field newsletter-section__email-field"
                            placeholder="Enter your email">
 
