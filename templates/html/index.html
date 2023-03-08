@@ -84,7 +84,7 @@
                     </a>
 
                     <h1 class="hero-section__heading">
-                        {{ hero_headers.0.content  }}
+                        {{ hero_headers.0.content }}
 
                     </h1>
 
@@ -197,12 +197,12 @@
                     <!-- Калькулятор -->
                     <div class="calculator-section__calculator">
                         <form class="calculator-section__calculator-form">
-                            <input type="text" class="field calculator-section__hash-rate-field" 
-                                placeholder="Enter your hashrate">
+                            <input type="text" class="field calculator-section__hash-rate-field"
+                                   placeholder="Enter your hashrate">
+                            {{ calculator }}
 
-                            <select class="field select calculator-section__coin-select">
-                                {{ calculator }}
-                            </select>
+                            {#                            <select class="field select calculator-section__coin-select">#}
+                            {#                            </select>#}
 
 
                             <button class="blue-button" type="button" id="calculateButton">
@@ -218,7 +218,7 @@
 
                             <!-- Результат -->
                             <output class="calculator-section__result">
-                                <span id="coinCount"> 0 </span> 
+                                <span id="coinCount"> 0 </span>
                                 <abbr title="Ethereum" id="coinName">ETH</abbr>
                                 <span id="profit">($0)</span>
                             </output>
@@ -241,46 +241,46 @@
 
                     <!-- Слайдер с криптовалютами -->
                     <div class="slider currencies-section__currencies-slider" data-slide-elements-count="3"
-                        data-slider-name="currencies-slider">
+                         data-slider-name="currencies-slider">
                         {% for coin in api_data %}
 
-                                <article class="currencies-slider__element currency-card currency-card_highlighted">
+                            <article class="currencies-slider__element currency-card currency-card_highlighted">
 
-                                    <img src="{{ coin.image }}" alt="Bitcoin icon"
-                                         class="currency-card__currency-icon">
+                                <img src="{{ coin.image }}" alt="Bitcoin icon"
+                                     class="currency-card__currency-icon">
 
-                                    <h3 class="currency-card__heading">
-                                        {{ coin.name }} <sup
-                                            class="currency-card__currency-code">{{ coin.symbol }}</sup>
-                                    </h3>
+                                <h3 class="currency-card__heading">
+                                    {{ coin.name }} <sup
+                                        class="currency-card__currency-code">{{ coin.symbol }}</sup>
+                                </h3>
 
-                                    <!-- <p class="currency-card__description">
-                                        Digital currency in which a record of transactions is maintained.
-                                    </p> -->
+                                <!-- <p class="currency-card__description">
+                                    Digital currency in which a record of transactions is maintained.
+                                </p> -->
 
-                                    <a class="blue-button currency-card__start-button" href="">
-                                        Start mining
-                                        <img src="../../static/img/right-arrow.svg" alt="Right arrow">
-                                    </a>
+                                <a class="blue-button currency-card__start-button" href="">
+                                    Start mining
+                                    <img src="../../static/img/right-arrow.svg" alt="Right arrow">
+                                </a>
 
-                                    <!-- Кнопка со стрелкой -->
-                                    <a class="currency-card__learn-more-link" href="">
-                                        <img src="../../static/img/right-arrow-2.svg" alt="Right arrow">
-                                    </a>
+                                <!-- Кнопка со стрелкой -->
+                                <a class="currency-card__learn-more-link" href="">
+                                    <img src="../../static/img/right-arrow-2.svg" alt="Right arrow">
+                                </a>
 
-                                </article>
+                            </article>
 
-                            {% endfor %}
+                        {% endfor %}
 
-                            <div class="currencies-slider__navigation-arrows currencies-section__slider-buttons">
-                                <button class="left-arrow-button">
-                                    <img src="../../static/img/left-arrow.svg" alt="Left arrow">
-                                </button>
+                        <div class="currencies-slider__navigation-arrows currencies-section__slider-buttons">
+                            <button class="left-arrow-button">
+                                <img src="../../static/img/left-arrow.svg" alt="Left arrow">
+                            </button>
 
-                                <button class="right-arrow-button">
-                                    <img src="../../static/img/right-arrow-3.svg" alt="Right arrow">
-                                </button>
-                            </div>
+                            <button class="right-arrow-button">
+                                <img src="../../static/img/right-arrow-3.svg" alt="Right arrow">
+                            </button>
+                        </div>
                     </div>
             </section>
         </section>
@@ -326,7 +326,7 @@
                             {{ statistic_data.2.description }}
 
                         </p>
-                        
+
                         <select class="select merit__coin-select">
                             <option value="bitcoin">
                                 Bitcoin
@@ -366,40 +366,40 @@
                         </a>
                     </div>
 
-                    <table class="slider dinamic__courses" data-slide-elements-count="3" 
-                            data-slider-name="currencies-table-slider" data-slides-tag-name="tbody">
+                    <table class="slider dinamic__courses" data-slide-elements-count="3"
+                           data-slider-name="currencies-table-slider" data-slides-tag-name="tbody">
 
-                            <thead>
-                                <th>&nbsp;</th>
-                                <th>Price</th>
-                                <th>Change</th>
-                                <th>Volume(24h)</th>
-                            </thead>
+                        <thead>
+                        <th>&nbsp;</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        <th>Volume(24h)</th>
+                        </thead>
 
-                            {% for coin in coin_for_statistic %}
+                        {% for coin in coin_for_statistic %}
 
                             <tr class="currencies-table-slider__element">
                                 <td class="crypt"><img src={{ coin.image }} alt="Bitcoin"></td>
                                 <td>{{ coin.current_price }}</td>
-                                <td>{{coin.price_change_24h}}</td>
+                                <td>{{ coin.price_change_24h }}</td>
                                 <td>{{ coin.total_volume }}</td>
                             </tr>
 
-                            {% endfor %}
+                        {% endfor %}
 
-                            <tfoot class="currencies-table-slider__near-element">
-                                <tr class="currencies-table-slider__navigation-arrows" colspan="4">
-                                    <td>
-                                        <button class="left-arrow-button">
-                                            <img src="../../static/img/left-arrow-2.svg" alt="Left arrow">
-                                        </button>
-            
-                                        <button class="right-arrow-button">
-                                            <img src="../../static/img/right-arrow-4.svg" alt="Right arrow">
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tfoot>
+                        <tfoot class="currencies-table-slider__near-element">
+                        <tr class="currencies-table-slider__navigation-arrows" colspan="4">
+                            <td>
+                                <button class="left-arrow-button">
+                                    <img src="../../static/img/left-arrow-2.svg" alt="Left arrow">
+                                </button>
+
+                                <button class="right-arrow-button">
+                                    <img src="../../static/img/right-arrow-4.svg" alt="Right arrow">
+                                </button>
+                            </td>
+                        </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
