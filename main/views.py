@@ -33,7 +33,7 @@ def home(request):
         'chart': Chart
     }
 
-    return render(request, 'html/index.html', context)
+    return render(request, '../templates/html/index.html', context)
 
 
 def calculate_income(request):
@@ -50,7 +50,7 @@ def calculate_income(request):
 
 class LoginUserView(LoginView):
     form_class = AuthUserForm
-    template_name = 'html/login.html'
+    template_name = '../templates/html/login.html'
 
     def get_success_url(self):
         self.success_url = 'http://127.0.0.1:8000/home/'
@@ -58,7 +58,7 @@ class LoginUserView(LoginView):
 
 
 class RegisterUserView(View):
-    template_name = 'html/register.html'
+    template_name = '../templates/html/register.html'
 
     def get(self, request):
         context = {
@@ -85,7 +85,7 @@ def subscribe_to_the_newsletter(request):
     current_user = request.user
     current_user.subscribe_to_the_newsletter = True
     current_user.save()
-    return render(request, 'html/index.html')
+    return render(request, '../templates/html/index.html')
 
 
 def calculator(request):
