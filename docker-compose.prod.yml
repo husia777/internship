@@ -69,8 +69,8 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static_volume:/static
-      - media_volume:/media
+      - static_volume:/usr/src/hussein/static
+      - media_volume:/usr/src/hussein/media
     ports:
       - 1337:80
     depends_on:
