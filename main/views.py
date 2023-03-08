@@ -53,7 +53,7 @@ class LoginUserView(LoginView):
     template_name = '../templates/html/login.html'
 
     def get_success_url(self):
-        self.success_url = 'http://127.0.0.1:8000/home/'
+        self.success_url = reverse('home')
         return self.success_url
 
 
