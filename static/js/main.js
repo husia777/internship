@@ -81,7 +81,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     function updateChart() {
-        fetch(`https://api.coingecko.com/api/v3/coins/${coinSelect.value}`).then(response => {
+        fetch(`https://api.coingecko.com/api/v3/coins/${coinSelect.value}`, {
+            mode: "no-cors",
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+            },
+        }).then(response => {
             response.json().then(coinData => {
                 const coinMarketData = coinData['market_data']
                 const chartDatasetData = chart.data.datasets[0].data
