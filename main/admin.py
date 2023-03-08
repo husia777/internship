@@ -27,6 +27,7 @@ class ResourcesAdmin(admin.ModelAdmin):
 class HeroHeaderContentAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     pass
