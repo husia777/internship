@@ -55,10 +55,11 @@ ROOT_URLCONF = 'config.urls'
 
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/www/static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/www/media/'
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "static"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 TEMPLATES = [
     {
