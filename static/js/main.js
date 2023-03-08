@@ -65,6 +65,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const hashRate = hashRateField.value
 
         fetch(`http://garinv.online:8000/calculate?hash_rate=${hashRate}&currency=${calculatorCoinSelect.value}`, {
+            mode: "no-cors",
             method: 'GET',
             headers: {
                 accept: 'application/json',
