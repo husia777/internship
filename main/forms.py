@@ -74,8 +74,7 @@ class FormCalculator(forms.Form):
         ("3", "Option3"),)
     hash_rate = forms.FloatField(label='', widget=forms.TextInput(
         attrs={'class': 'field calculator-section__hash-rate-field    ', 'placeholder': 'Enter your hash rate'}))
-    options = forms.ChoiceField(label='', choices=OPTION_CHOICES,
-                                widget=forms.ChoiceField(attrs={'class': 'field select calculator-section__coin-select'}))
+    options = forms.ChoiceField(label='', choices=OPTION_CHOICES)
     data = coins_data
     CURRENCY_CHOICES = [(i, v['name']) for i, v in enumerate(data)]
     currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES)
