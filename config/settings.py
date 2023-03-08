@@ -53,15 +53,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "internship/static"),
-]
-
 STATIC_URL = "/static/"
 STATIC_ROOT = "/var/www/internship/static/"
-
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
+)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
