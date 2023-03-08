@@ -57,7 +57,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = "/var/www/internship/static/"
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
+    '/var/www/internship/static/',
 )
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
