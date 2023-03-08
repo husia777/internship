@@ -55,7 +55,9 @@ ROOT_URLCONF = 'config.urls'
 
 
 
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "internship/static"),
+]
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "static"
