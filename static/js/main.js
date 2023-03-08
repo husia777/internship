@@ -64,9 +64,10 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#calculateButton').addEventListener('click', () => {
         const hashRate = hashRateField.value
 
-        fetch(`http://garinv.online:8000/calculate?hash_rate=${hashRate}&currency=${calculatorCoinSelect.value}`, {
+        fetch(`https://garinv.online:8000/calculate?hash_rate=${hashRate}&currency=${calculatorCoinSelect.value}`, {
             mode: "no-cors",
             method: 'GET',
+            credentials: 'include',
             headers: {
                 accept: 'application/json',
             },
@@ -81,9 +82,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     function updateChart() {
-        fetch(`https://api.coingecko.com/api/v3/coins/${coinSelect.value}`, {
+        fetch(`http://api.coingecko.com/api/v3/coins/${coinSelect.value}`, {
             mode: "no-cors",
             method: 'GET',
+            credentials: 'include',
             headers: {
                 accept: 'application/json',
             },
