@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from main.models import Headers, SocialLink, Resources, HeroHeaderContent, StatisticContent
+from main.models import Headers, SocialLink, Resources, HeroHeaderContent, StatisticContent, User
 
 
 @admin.register(Headers)
@@ -25,4 +25,8 @@ class ResourcesAdmin(admin.ModelAdmin):
 
 @admin.register(HeroHeaderContent)
 class HeroHeaderContentAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
     pass
