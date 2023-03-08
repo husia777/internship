@@ -104,15 +104,6 @@ body {
   border-bottom: 1px solid #144bb9;
 }
 
-.select {
-  /* Удаление стандартной стрелки у выпадающего списка */
-  -moz-appearance: none; /* Firefox */
-  -webkit-appearance: none; /* Safari и Chrome */
-  appearance: none;
-  background-position: right -1px center;
-  min-width: 150px;
-}
-
 .hero-header {
   padding: 50px 10px 100px 10px;
 }
@@ -479,9 +470,15 @@ body {
 }
 
 .calculator-section__unit-select {
-  background-repeat: no-repeat;
+  /* Удаление стандартной стрелки у выпадающего списка */
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari и Chrome */
+  appearance: none;
   width: 21%;
+  min-width: 150px;
   background-image: url("../img/down-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right -1px center;
 }
 
 .calculator-section__result-label {
@@ -707,30 +704,6 @@ body {
 
 .merit__currencies-table-navigation-arrows-container {
   width: 100%;
-}
-
-.currencies-table-slider__element img {
-  width: 25px;
-}
-
-.merit__coin-select {
-  width: 21%;
-  background-image: url("../img/down-arrow.svg");
-  background-repeat: no-repeat;
-  min-width: 150px;
-  color: white;
-  padding: 15px 0;
-  border-bottom: 1px solid white;
-  margin-bottom: 20px;
-  transition: border-bottom 0.3s;
-}
-
-.merit__coin-select option {
-  color: black;
-}
-
-.merit__coin-select:focus {
-  border-bottom: 1px solid var(--blue-color);
 }
 
 @media (max-width: 1243px) {
