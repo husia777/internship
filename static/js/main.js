@@ -2,51 +2,52 @@
 window.addEventListener('DOMContentLoaded', () => {
     const currenciesTableBody = document.querySelector('.dinamic__courses tbody')
     currenciesTableBody.replaceWith(...currenciesTableBody.childNodes)
+    
+    const coinSelect = document.querySelector('.merit__coin-select')
 
     Chart.defaults.color = 'white'
     Chart.defaults.font.family = 'Rubik'
     const meritChartCanvas = document.getElementById('meritChart')
+    const chart = new Chart(meritChartCanvas, {
+        type: 'bar',
+        data: {
+            labels: [ 'Per day', 'Per week', 'Per month', 'Per year' ], // Надписи для столбов графика
+            datasets: [{
+                label: 'Data',
+                data: [ 0, 0, 0, 0 ], // Данные для графика
+            }]
+        },
+        options: {
+            responsive: true, // Делает график адаптивным относительно родителя
 
-    // Здесь происходит формирование запроса по данным для графика:
-    fetch('http://127.0.0.1:8000/chart/').then(response => {
-    response.json().then(data => {
-        Chart.defaults.color = 'white'
-        Chart.defaults.font.family = 'Rubik'
-        const meritChartCanvas = document.getElementById('meritChart')
-        new Chart(meritChartCanvas, {
-            type: 'bar',
-            data: {
-                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ], // Надписи для столбов графика
-                datasets: [{
-                    label: 'Data',
-                    data: data, // Данные для графика
-                }]
-            },
-            options: {
-                responsive: true, // Делает график адаптивным относительно родителя
-                plugins: {
-                    legend: {
-                        labels: {
-                            font: {
-                                size: 14,
-                            }
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 18,
                         }
-                    },
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
                     }
                 },
-                elements: {
-                    bar: {
-                        backgroundColor: 'rgba(101,138,231,0.79)'
-                    }
+            },
+
+            scales: {
+                y: {
+                    beginAtZero: false
                 }
             },
-        })
-    }).catch(error => console.log(error))
-}).catch(error => console.log(error))
+
+            elements: {
+                bar: {
+                    backgroundColor: '#2b67ffc9'
+                }
+            }
+        },
+    })
+
+    coinSelect.addEventListener('change', () => {
+        updateChart()
+    })
+    updateChart()
 
     // Получает все слайдеры
     const sliders = document.querySelectorAll('.slider')
@@ -54,6 +55,40 @@ window.addEventListener('DOMContentLoaded', () => {
     sliders.forEach(slider => {
         initializeSlider(slider)
     })
+
+    const hashRateField = document.querySelector('.calculator-section__hash-rate-field')
+    const calculatorCoinSelect = document.querySelector('.calculator-section__coin-select')
+    const coinCount = document.getElementById('coinCount')
+    const coinName = document.getElementById('coinName')
+    const profit = document.getElementById('profit')
+    document.querySelector('#calculateButton').addEventListener('click', () => {
+        const hashRate = hashRateField.value
+
+        fetch(`http://127.0.0.1:8000/calculate?hash_rate=${hashRate}&currency=${calculatorCoinSelect.value}`).then(response => {
+            response.json().then(data => {
+                coinCount.textContent = data.count
+                profit.textContent = `(${data.profit})`
+                coinName.textContent = data['name_coins']
+            })
+        })
+    })
+
+
+    function updateChart() {
+        fetch(`https://api.coingecko.com/api/v3/coins/${coinSelect.value}`).then(response => {
+            response.json().then(coinData => {
+                const coinMarketData = coinData['market_data']
+                const chartDatasetData = chart.data.datasets[0].data
+
+                chartDatasetData[0] = coinMarketData['price_change_24h']
+                chartDatasetData[1] = coinMarketData['price_change_percentage_7d']
+                chartDatasetData[2] = coinMarketData['price_change_percentage_30d']
+                chartDatasetData[3] = coinMarketData['price_change_percentage_1y']
+
+                chart.update()
+            })
+        })
+    }
 })
 
 function initializeSlider(slider) {
@@ -123,13 +158,7 @@ function initializeSlider(slider) {
     function createNewSlide() {
         const newSlide = document.createElement(slidesTagName)
         newSlide.classList.add(`${sliderName}__slide`)
-
+    
         return newSlide
     }
 }
-
-    //fetch запрос для калькулятора:
-fetch(`http://127.0.0.1:8000/calculate/`)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
