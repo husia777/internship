@@ -2,7 +2,7 @@
 window.addEventListener('DOMContentLoaded', () => {
     const currenciesTableBody = document.querySelector('.dinamic__courses tbody')
     currenciesTableBody.replaceWith(...currenciesTableBody.childNodes)
-
+    
     const coinSelect = document.querySelector('.merit__coin-select')
 
     Chart.defaults.color = 'white'
@@ -11,10 +11,10 @@ window.addEventListener('DOMContentLoaded', () => {
     const chart = new Chart(meritChartCanvas, {
         type: 'bar',
         data: {
-            labels: ['Per day', 'Per week', 'Per month', 'Per year'], // Надписи для столбов графика
+            labels: [ 'Per day', 'Per week', 'Per month', 'Per year' ], // Надписи для столбов графика
             datasets: [{
                 label: 'Data',
-                data: [0, 0, 0, 0], // Данные для графика
+                data: [ 0, 0, 0, 0 ], // Данные для графика
             }]
         },
         options: {
@@ -64,14 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#calculateButton').addEventListener('click', () => {
         const hashRate = hashRateField.value
 
-        fetch(`https://garinv.online:8000/calculate?hash_rate=${hashRate}&currency=${calculatorCoinSelect.value}`, {
-            mode: "no-cors",
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                accept: 'application/json',
-            },
-        }).then(response => {
+        fetch(`http://127.0.0.1:8000/calculate?hash_rate=${hashRate}&currency=${calculatorCoinSelect.value}`).then(response => {
             response.json().then(data => {
                 coinCount.textContent = data.count
                 profit.textContent = `(${data.profit})`
@@ -82,14 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     function updateChart() {
-        fetch(`http://api.coingecko.com/api/v3/coins/${coinSelect.value}`, {
-            mode: "no-cors",
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                accept: 'application/json',
-            },
-        }).then(response => {
+        fetch(`https://api.coingecko.com/api/v3/coins/${coinSelect.value}`).then(response => {
             response.json().then(coinData => {
                 const coinMarketData = coinData['market_data']
                 const chartDatasetData = chart.data.datasets[0].data
@@ -117,7 +103,7 @@ function initializeSlider(slider) {
     const slidesTagName = slider.getAttribute('data-slides-tag-name') || 'div'
     const slideElementsCount = slider.getAttribute('data-slide-elements-count')
     const sliderElements = [...slider.querySelectorAll(`.${sliderName}__element`)]
-    const slides = [createNewSlide()] // Создает массив слайдов с одним начальным слайдом
+    const slides = [ createNewSlide() ] // Создает массив слайдов с одним начальным слайдом
 
     sliderElements.forEach(element => {
         // Удаляет элементы из DOM-дерева, чтобы потом поместить в отдельный слайд
@@ -130,7 +116,8 @@ function initializeSlider(slider) {
             newSlide.hidden = true
             newSlide.insertAdjacentElement('beforeend', element)
             slides.push(newSlide)
-        } else {
+        }
+        else {
             lastSlide.insertAdjacentElement('beforeend', element)
         }
     })
@@ -138,9 +125,10 @@ function initializeSlider(slider) {
     // Вставляет слайдеры в DOM-дерево
     const nearElement = document.querySelector(`.${sliderName}__near-element`)
     slides.forEach(slide => {
-        if (nearElement != null) {
+        if(nearElement != null) {
             nearElement.insertAdjacentElement('beforebegin', slide)
-        } else {
+        }
+        else {
             sliderArrows.insertAdjacentElement('beforebegin', slide)
         }
     })
@@ -150,7 +138,7 @@ function initializeSlider(slider) {
     function goToNextSlide() {
         const currentSlide = slides.filter(slide => !slide.hidden)[0]
         const currentSlideIndex = slides.indexOf(currentSlide)
-        if (currentSlideIndex < slides.length - 1) {
+        if(currentSlideIndex < slides.length - 1) {
             currentSlide.hidden = true
             slides[currentSlideIndex + 1].hidden = false
         }
@@ -161,7 +149,7 @@ function initializeSlider(slider) {
         const currentSlide = slides.filter(slide => !slide.hidden)[0]
         const currentSlideIndex = slides.indexOf(currentSlide)
 
-        if (currentSlideIndex > 0) {
+        if(currentSlideIndex > 0) {
             currentSlide.hidden = true
             slides[currentSlideIndex - 1].hidden = false
         }
@@ -170,7 +158,7 @@ function initializeSlider(slider) {
     function createNewSlide() {
         const newSlide = document.createElement(slidesTagName)
         newSlide.classList.add(`${sliderName}__slide`)
-
+    
         return newSlide
     }
 }

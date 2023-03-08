@@ -13,9 +13,9 @@
 
     <title>Cryptocurrency</title>
 
-    <link rel="stylesheet" href="../../static/css/normalize.css">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
     <!-- Стили, сбрасывающие неудобные стили по умолчанию -->
-    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
@@ -197,12 +197,18 @@
                     <!-- Калькулятор -->
                     <div class="calculator-section__calculator">
                         <form class="calculator-section__calculator-form">
-{#                            <input type="text" class="field calculator-section__hash-rate-field"#}
-{#                                   placeholder="Enter your hashrate">#}
-                            {{ calculator }}
+                            <input type="text" class="field calculator-section__hash-rate-field"
+                                   placeholder="Enter your hashrate">
 
-                            {#                            <select class="field select calculator-section__coin-select">#}
-                            {#                            </select>#}
+                            <select class="field select calculator-section__coin-select">
+                                <option value="0">
+                                    Bitcoin
+                                </option>
+
+                                <option value="3">
+                                    Litecoin
+                                </option>
+                            </select>
 
 
                             <button class="blue-button" type="button" id="calculateButton">
