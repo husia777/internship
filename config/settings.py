@@ -160,8 +160,4 @@ REDIS_PORT = '6379'
 CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_BROKER_TRANSPORT_OPTION = {'visibility_timeout': 3600}
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000/calculate/",
-    "http://127.0.0.1:8000/chart/",
-
-]
+CORS_ALLOW_ALL_ORIGINS = True
