@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#calculateButton').addEventListener('click', () => {
         const hashRate = hashRateField.value
 
-        fetch(`http://127.0.0.1:8000/calculate?hash_rate=${hashRate}&currency=${calculatorCoinSelect.value}`).then(response => {
+        fetch(`http://garinv.online:8000/calculate?hash_rate=${hashRate}&currency=${calculatorCoinSelect.value}`).then(response => {
             response.json().then(data => {
                 coinCount.textContent = data.count
                 profit.textContent = `(${data.profit})`
