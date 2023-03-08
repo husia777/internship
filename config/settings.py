@@ -53,6 +53,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+
+
 STATIC_URL = '/static/'
 STATIC_ROOT = '/www/static/'
 MEDIA_URL = '/media/'
