@@ -70,7 +70,7 @@ def subscribe_to_the_newsletter(request):
     current_user = request.user
     current_user.subscribe_to_the_newsletter = True
     current_user.save()
-    return render(request, '../templates/html/index.html')
+    return redirect('home')
 
 
 def calculator(request):
