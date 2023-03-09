@@ -73,7 +73,7 @@ services:
       - media_volume:/app/media
     ports:
       - 1337:80
-      - 8000:8000
+      - 8080:8080
       - 3000:3000
     depends_on:
       - app
