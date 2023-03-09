@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 
 
 class SocialLink(models.Model):
-    url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
+    url = models.URLField(max_length=255, default='http://garinv.online:8000/home/')
 
     def url_text(self):
         parsed_url = urlparse(self.url)
@@ -14,7 +14,7 @@ class SocialLink(models.Model):
 class HeroHeaderContent(models.Model):
     content = models.CharField(max_length=255)
     description = models.TextField(default='')
-    url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
+    url = models.URLField(max_length=255, default='http://garinv.online:8000/home/')
 
     def url_text(self):
         parsed_url = urlparse(self.url)
@@ -22,7 +22,7 @@ class HeroHeaderContent(models.Model):
 
 
 class StatisticContent(models.Model):
-    url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
+    url = models.URLField(max_length=255, default='http://garinv.online:8000/home/')
     content = models.CharField(max_length=255, default='')
     description = models.TextField(default='')
 
@@ -33,7 +33,7 @@ class StatisticContent(models.Model):
 
 class Resources(models.Model):
     title = models.CharField(max_length=60)
-    url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
+    url = models.URLField(max_length=255, default='http://garinv.online:8000/home/')
 
     def url_text(self):
         parsed_url = urlparse(self.url)
@@ -42,7 +42,7 @@ class Resources(models.Model):
 
 class Headers(models.Model):
     title = models.CharField(max_length=60)
-    url = models.URLField(max_length=255, default='http://127.0.0.1:8000/home/')
+    url = models.URLField(max_length=255, default='http://garinv.online:8000/home/')
 
 
 class User(AbstractUser):
