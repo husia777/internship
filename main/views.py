@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.urls import reverse
 
-from main.forms import AuthUserForm, CreateUserForm, FormCalculator, Chart
+from main.forms import AuthUserForm, CreateUserForm
 from django.views.generic import View
 from django.shortcuts import redirect
 from main.models import Headers, Resources, HeroHeaderContent, StatisticContent
@@ -29,22 +29,9 @@ def home(request):
         'headers': headers[1::],
         'hero_headers': hero_headers,
         'resources': resources,
-        'chart': Chart
     }
 
     return render(request, '../templates/html/index.html', context)
-
-
-def calculate_income(request):
-    if request.method == 'GET':
-        form = FormCalculator(request.GET)
-        if form.is_valid():
-            coin = form.cleaned_data['currency']
-            currencies = coins_data
-            current_coin_price = currencies[coin]
-            request.session['currency'] = current_coin_price
-
-            return JsonResponse({'currency': current_coin_price})
 
 
 class LoginUserView(LoginView):
@@ -101,6 +88,8 @@ def calculator(request):
 def chart(request):
     currency = request.GET.get('currency')
     data = requests.get(f'https://api.coingecko.com/api/v3/coins/{currency}').json()
-    response = {'24h': data['market_data']['price_change_percentage_24h'], '7d': data['market_data']['price_change_percentage_7d'],
-                '30d': data['market_data']['price_change_percentage_30d'], '1y': data['market_data']['price_change_percentage_1y']}
+    response = {'24h': data['market_data']['price_change_percentage_24h'],
+                '7d': data['market_data']['price_change_percentage_7d'],
+                '30d': data['market_data']['price_change_percentage_30d'],
+                '1y': data['market_data']['price_change_percentage_1y']}
     return JsonResponse(response)

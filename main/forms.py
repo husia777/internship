@@ -67,27 +67,23 @@ class CreateUserForm(ModelForm):
         return user
 
 
-class FormCalculator(forms.Form):
-    OPTION_CHOICES = (
-        ("1", "TH/s"),
-        ("2", "Option23"),
-        ("3", "Option3"),)
-    hash_rate = forms.FloatField(label='', widget=forms.TextInput(
-        attrs={'class': 'field calculator-section__hash-rate-field', 'placeholder': 'Enter your hash rate'}))
-    options = forms.ChoiceField(label='', choices=OPTION_CHOICES)
-    data = coins_data
-    CURRENCY_CHOICES = [(i, v['name']) for i, v in enumerate(data)]
-    currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES,
-                                 widget=forms.Select(attrs={'class': 'calculator-section__coin-select'}))
-
-
-class Chart(forms.Form):
-    data = coins_data
-    CURRENCY_CHOICES = [(i, v['id']) for i, v in enumerate(data)]
-    currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES,
-                                 widget=forms.Select(attrs={'class': 'select merit__coin-select'}))
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs['class'] = 'chart-control'
+# class FormCalculator(forms.Form):
+#     OPTION_CHOICES = (
+#         ("1", "TH/s"),
+#         ("2", "Option23"),
+#         ("3", "Option3"),)
+#     hash_rate = forms.FloatField(label='', widget=forms.TextInput(
+#         attrs={'class': 'field calculator-section__hash-rate-field', 'placeholder': 'Enter your hash rate'}))
+#     options = forms.ChoiceField(label='', choices=OPTION_CHOICES)
+#     data = coins_data
+#     CURRENCY_CHOICES = [(i, v['name']) for i, v in enumerate(data)]
+#     currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES,
+#                                  widget=forms.Select(attrs={'class': 'calculator-section__coin-select'}))
+#
+#
+# class Chart(forms.Form):
+#     data = coins_data
+#     CURRENCY_CHOICES = [(i, v['name']) for i, v in enumerate(data)]
+#     currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES,
+#                                  widget=forms.Select(attrs={'class': 'select merit__coin-select'}))
+#
