@@ -20,7 +20,6 @@ def home(request):
     api_data = coins_data
     coin_for_statistic = requests.get(
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false').json()
-    print(api_data)
     context = {
         'statistic_data': statistic_data,
         'coin_for_statistic': coin_for_statistic,
@@ -80,7 +79,6 @@ def calculator(request):
 
     data = requests.get(
         f'https://whattomine.com/coins/{currency}.json?hr={hash_rate}&cost_currency=USD').json()
-    print(data)
     response = {'profit': data['profit'], 'name_coins': data['tag'], 'count': data['estimated_rewards']}
     return JsonResponse(response)
 

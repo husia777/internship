@@ -3,9 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django import forms
 from django.forms import ModelForm
-import requests
 from main.models import User
-from main.services import coins_data
 
 
 class AuthUserForm(AuthenticationForm, ModelForm):
@@ -50,7 +48,6 @@ class CreateUserForm(ModelForm):
         return email
 
     def clean_password2(self):
-        # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
 
@@ -59,7 +56,6 @@ class CreateUserForm(ModelForm):
         return password2
 
     def save(self, commit=True):
-        # Save the provided password in hashed format
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         if commit:
@@ -67,23 +63,3 @@ class CreateUserForm(ModelForm):
         return user
 
 
-# class FormCalculator(forms.Form):
-#     OPTION_CHOICES = (
-#         ("1", "TH/s"),
-#         ("2", "Option23"),
-#         ("3", "Option3"),)
-#     hash_rate = forms.FloatField(label='', widget=forms.TextInput(
-#         attrs={'class': 'field calculator-section__hash-rate-field', 'placeholder': 'Enter your hash rate'}))
-#     options = forms.ChoiceField(label='', choices=OPTION_CHOICES)
-#     data = coins_data
-#     CURRENCY_CHOICES = [(i, v['name']) for i, v in enumerate(data)]
-#     currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES,
-#                                  widget=forms.Select(attrs={'class': 'calculator-section__coin-select'}))
-#
-#
-# class Chart(forms.Form):
-#     data = coins_data
-#     CURRENCY_CHOICES = [(i, v['name']) for i, v in enumerate(data)]
-#     currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES,
-#                                  widget=forms.Select(attrs={'class': 'select merit__coin-select'}))
-#

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import  redirect
 
 from .forms import MailingForm
 from .models import MailSubscribedToTheNewsletter
