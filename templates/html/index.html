@@ -197,19 +197,19 @@
                     <!-- Калькулятор -->
                     <div class="calculator-section__calculator">
                         <form class="calculator-section__calculator-form">
-                            <input type="text" class="field calculator-section__hash-rate-field"
-                                   placeholder="Enter your hashrate">
-
-                            <select class="field select calculator-section__coin-select">
-                                <option value="0">
-                                    Bitcoin
-                                </option>
-
-                                <option value="3">
-                                    Litecoin
-                                </option>
-                            </select>
-
+                            {#                            <input type="text" class="field calculator-section__hash-rate-field"#}
+                            {#                                   placeholder="Enter your hashrate">#}
+                            {##}
+                            {#                            <select class="field select calculator-section__coin-select">#}
+                            {#                                <option value="0">#}
+                            {#                                    Bitcoin#}
+                            {#                                </option>#}
+                            {##}
+                            {#                                <option value="3">#}
+                            {#                                    Litecoin#}
+                            {#                                </option>#}
+                            {#                            </select>#}
+                            {{ calculator }}
 
                             <button class="blue-button" type="button" id="calculateButton">
                                 Calculate
@@ -332,20 +332,20 @@
                             {{ statistic_data.2.description }}
 
                         </p>
-
-                        <select class="select merit__coin-select">
-                            <option value="bitcoin">
-                                Bitcoin
-                            </option>
-
-                            <option value="ethereum">
-                                Ethereum
-                            </option>
-
-                            <option value="litecoin">
-                                Litecoin
-                            </option>
-                        </select>
+                        {{ chart }}
+                        {#                        <select class="select merit__coin-select">#}
+                        {#                            <option value="bitcoin">#}
+                        {#                                Bitcoin#}
+                        {#                            </option>#}
+                        {##}
+                        {#                            <option value="ethereum">#}
+                        {#                                Ethereum#}
+                        {#                            </option>#}
+                        {##}
+                        {#                            <option value="litecoin">#}
+                        {#                                Litecoin#}
+                        {#                            </option>#}
+                        {#                        </select>#}
 
                         <a href={{ statistic_data.1.url }}>
                             <button class="blue-button">
