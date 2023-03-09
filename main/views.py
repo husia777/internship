@@ -29,7 +29,6 @@ def home(request):
         'headers': headers[1::],
         'hero_headers': hero_headers,
         'resources': resources,
-        'calculator': FormCalculator,
         'chart': Chart
     }
 
