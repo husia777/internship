@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django import forms
 from django.forms import ModelForm
-
+import requests
 from main.models import User
 from main.services import coins_data
 
@@ -77,13 +77,15 @@ class FormCalculator(forms.Form):
     options = forms.ChoiceField(label='', choices=OPTION_CHOICES)
     data = coins_data
     CURRENCY_CHOICES = [(i, v['name']) for i, v in enumerate(data)]
-    currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES)
+    currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES,
+                                 widget=forms.Select(attrs={'class': 'calculator-section__coin-select'}))
 
 
 class Chart(forms.Form):
     data = coins_data
     CURRENCY_CHOICES = [(i, v['id']) for i, v in enumerate(data)]
-    currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES)
+    currency = forms.ChoiceField(label='', choices=CURRENCY_CHOICES,
+                                 widget=forms.Select(attrs={'class': 'select merit__coin-select'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

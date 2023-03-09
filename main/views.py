@@ -91,8 +91,10 @@ def subscribe_to_the_newsletter(request):
 def calculator(request):
     hash_rate = request.GET.get('hash_rate')
     currency = int(request.GET.get('currency')) + 1
+
     data = requests.get(
-        f'https://whattomine.com/coins/{currency}.json?hr={hash_rate}.0&p=0.0&fee=0.0&cost=0.0&cost_currency=USD&hcost=0.0&span_br=&span_d=24').json()
+        f'https://whattomine.com/coins/{currency}.json?hr={hash_rate}&cost_currency=USD').json()
+    print(data)
     response = {'profit': data['profit'], 'name_coins': data['tag'], 'count': data['estimated_rewards']}
     return JsonResponse(response)
 
