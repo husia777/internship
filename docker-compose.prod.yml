@@ -69,12 +69,10 @@ services:
     build: ./nginx
     # Подключаем статические и медиа файлы
     volumes:
-      - static_volume:/usr/src/hussein/internship/static
-      - media_volume:/usr/src/hussein/internship/media
+      - static_volume:/var/www/internship/static
+      - media_volume:/app/media
     ports:
       - 1337:80
-      - 8080:8080
-      - 3000:3000
     depends_on:
       - app
 volumes:
