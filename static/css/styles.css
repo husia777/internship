@@ -118,7 +118,6 @@ body {
 }
 
 .hero-header__container {
-  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -732,7 +731,10 @@ body {
 .merit__coin-select:focus {
   border-bottom: 1px solid var(--blue-color);
 }
-
+.dinamic__courses>thead, .currencies-table-slider__element {
+  font-size: 400;
+  color: white;
+}
 @media (max-width: 1243px) {
   .merit__overflowing-illustration {
     -webkit-transform: none;
